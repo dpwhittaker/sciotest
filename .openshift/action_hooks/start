@@ -4,7 +4,6 @@
 # $OPENSHIFT_DIY_IP:8080
 
 source ${OPENSHIFT_DATA_DIR}.env
-export
 cd ${OPENSHIFT_REPO_DIR}scio
 mrt install
 
