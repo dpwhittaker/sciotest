@@ -2,5 +2,10 @@
 # The logic to start up your application should be put in this
 # script. The application will work only if it binds to
 # $OPENSHIFT_DIY_IP:8080
+source ${OPENSHIFT_DATA_DIR}.env
 cd $OPENSHIFT_REPO_DIR
-METEOR_IP=$OPENSHIFT_DIY_IP METEOR_PORT=$OPENSHIFT_DIY_PORT nohup $OPENSHIFT_DATA_DIR/meteor/meteor > $OPENSHIFT_DIY_DIR/logs/server.log 2>&1 &
+
+if [ -z "$(ps -ef | grep node | grep -v grep)" ]
+then
+    nohup meteor > ${OPENSHIFT_DIY_LOG_DIR}server.log 2>&1 &
+fi
