@@ -1,0 +1,9 @@
+{
+  "packages": {
+    "bootstrap-3": {},
+    "accounts-ui-bootstrap-3": {},
+    "HTML5-History-API": {},
+    "router": {},
+    "typeahead-js": {}
+  }
+}

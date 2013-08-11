@@ -1,0 +1,34 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>SCIO</title>
+</head>
+
+<body>
+  <div id="content" class="container">
+    <div class="navbar">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">SCIO</a>
+      <div class="nav-collapse collapse navbar-responsive-collapse">
+        {{>navbar}}
+        {{>login}}
+      </div>
+    </div>
+    {{renderPage}}
+  </div>
+</body>
+
+<template name="classes">
+  <h1>Classes</h1>
+</template>
+
+<template name="navbar">
+  <ul class="nav navbar-nav">
+    {{#each navbarItems}}
+      <li class="{{isActive}}"><a href="{{route}}">{{title}}</a></li>
+    {{/each}}
+  </ul>
+</template>

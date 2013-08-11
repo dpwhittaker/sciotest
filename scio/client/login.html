@@ -1,0 +1,35 @@
+<template name="login">
+  {{#if currentUser}}
+    {{#if loggingIn}}
+      {{>loggingIn}}
+    {{else}}
+      {{>loggedIn}}
+    {{/if}}
+  {{else}}
+    {{>loggedOut}}
+  {{/if}}
+</template>
+
+<template name="loggedIn">
+  <ul class="nav navbar-nav pull-right">
+    <li><a href="#">Welcome, {{currentUser.username}}</a></li>
+    <li><button class="btn btn-default navbar-btn signOut">Sign Out</button></li>
+  </ul>
+</template>
+
+<template name="loggedOut">
+  <form class="navbar-form pull-right has-error">
+    <div class="input-group">
+      <input type="text" placeholder="Username or Email" class="pull-left username" style="width:150px" />
+      <input type="password" placeholder="Password" class="pull-left password" style="width:150px" />
+      <span class="input-group-btn" style="display:inline">
+        <button class="btn btn-primary pull-left signIn">Sign In</button>
+        <button class="btn btn-default pull-left forgotPassword">Forgot Password</button>
+      </span>
+    </div>
+  </form>
+</template>
+
+<template name="loggingIn">
+  <div class="nav-text pull-right">Logging in {{currentUser.username}}</div>
+</template>
