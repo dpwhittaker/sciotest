@@ -51,7 +51,7 @@ Template.signUp.events({
       }
     }, function(err) {
       if (err)
-        $(#errorMessage).html(err);
+        $('#errorMessage').html(err);
       else
         Meteor.router.to('/');
     });
