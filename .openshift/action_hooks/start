@@ -3,7 +3,7 @@
 # script. The application will work only if it binds to
 # $OPENSHIFT_DIY_IP:8080
 source ${OPENSHIFT_DATA_DIR}.env
-cd $OPENSHIFT_REPO_DIR
+cd ${OPENSHIFT_REPO_DIR}scio
 
 if [ -z "$(ps -ef | grep node | grep -v grep)" ]
 then

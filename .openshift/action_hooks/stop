@@ -6,5 +6,6 @@ if [ -z "$(ps -ef | grep node | grep -v grep)" ]
 then
     client_result "Application is already stopped"
 else
-    kill `ps -ef | grep node | grep -v grep | awk '{ print $2 }'` > /dev/null 2>&1
+    client_result "All pushes are hot deploys"
+#    kill `ps -ef | grep node | grep -v grep | awk '{ print $2 }'` > /dev/null 2>&1
 fi
