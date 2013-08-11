@@ -6,7 +6,6 @@
 source ${OPENSHIFT_DATA_DIR}.env
 export
 cd ${OPENSHIFT_REPO_DIR}scio
-pwd
 mrt install
 
 if [ -z "$(ps -ef | grep node | grep -v grep)" ]
