@@ -1,0 +1,45 @@
+<template name="questions">
+  <div class="row">
+    <div class="col-sm-4">
+      <legend>My Questions</legend>
+      <div class="list-group">
+        {{#each questions}}
+          <a href="#" class="list-group-item active" style="height:100px">
+            <img class="pull-left" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACDUlEQVR4Xu2Yz6/BQBDHpxoEcfTjVBVx4yjEv+/EQdwa14pTE04OBO+92WSavqoXOuFp+u1JY3d29rvfmQ9r7Xa7L8rxY0EAOAAlgB6Q4x5IaIKgACgACoACoECOFQAGgUFgEBgEBnMMAfwZAgaBQWAQGAQGgcEcK6DG4Pl8ptlsRpfLxcjYarVoOBz+knSz2dB6vU78Lkn7V8S8d8YqAa7XK83ncyoUCjQej2m5XNIPVmkwGFC73TZrypjD4fCQAK+I+ZfBVQLwZlerFXU6Her1eonreJ5HQRAQn2qj0TDukHm1Ws0Ix2O2260RrlQqpYqZtopVAoi1y+UyHY9Hk0O32w3FkI06jkO+74cC8Dh2y36/p8lkQovFgqrVqhFDEzONCCoB5OSk7qMl0Gw2w/Lo9/vmVMUBnGi0zi3Loul0SpVKJXRDmphvF0BOS049+n46nW5sHRVAXMAuiTZObcxnRVA5IN4DJHnXdU3dc+OLP/V63Vhd5haLRVM+0jg1MZ/dPI9XCZDUsbmuxc6SkGxKHCDzGJ2j0cj0A/7Mwti2fUOWR2Km2bxagHgt83sUgfcEkN4RLx0phfjvgEdi/psAaRf+lHmqEviUTWjygAC4EcKNEG6EcCOk6aJZnwsKgAKgACgACmS9k2vyBwVAAVAAFAAFNF0063NBAVAAFAAFQIGsd3JN/qBA3inwDTUHcp+19ttaAAAAAElFTkSuQmCC"/>
+            <h4 class="list-group-item-heading">{{title}}</h4>
+            <p class="list-group-item-text">{{text}}</p>
+          </a>
+        {{/each}}
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <form role="form">
+        <legend>Edit Question</legend>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title" placeholder="Title" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="text">Text</label><br/>
+          <a id="bold" href="#" class="btn btn-small btn-default"><i class="icon-bold"></i></a>
+          <a id="italic" href="#" class="btn btn-small btn-default"><i class="icon-italic"></i></a>
+          <a id="bullet" href="#" class="btn btn-small btn-default"><i class="icon-list-ul"></i></a>
+          <a id="number" href="#" class="btn btn-small btn-default"><i class="icon-list-ol"></i></a>
+          <a id="quote" href="#" class="btn btn-small btn-default"><i class="icon-quote-left"></i></a>
+          <a id="table" href="#" class="btn btn-small btn-default"><i class="icon-table"></i></a>
+          <a id="link" href="#" class="btn btn-small btn-default"><i class="icon-link"></i></a>
+          <a id="image" href="#" class="btn btn-small btn-default"><i class="icon-picture"></i></a>
+          <a id="math" href="#" class="btn btn-small btn-default">Σ</a>
+          <textarea name="text" id="text" rows="8" class="form-control"></textarea>
+        </div>
+        <small>Use <a title="a
+        b
+        c">Markdown</a> to add styles.</small>
+      </form>
+    </div>
+    <div class="col-sm-4">
+      <legend>Preview Question</legend>
+      <div id="text-output"></div>
+    </div>
+  </div>
+</template>

@@ -1,23 +1,14 @@
 <template name="signUp">
-  <form class="form-horizontal">
+  <form id="signUpForm" class="form-horizontal">
     <legend>Create Account</legend>
     <div class="row">
       <div class="col-sm-12 alert alert-danger" style="display:none">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <h4>Error!</h4>
-        <p id="errorMessage"></p>
+        <button type="button" class="close">&times;</button>
+        <strong>Error!</strong>
+        <span id="errorMessage"></span>
       </div>
     </div>
-    <div class="row">
-      <div class="validate-item" title="Required">
-        <label for="firstName" class="col-sm-2 control-label">First Name</label>
-        <div class="col-sm-4"><input type="text" id="firstName" name="firstName" placeholder="First Name" class="input-with-feedback" /></div>
-      </div>
-      <div class="validate-item" title="Required">
-        <label for="lastName" class="col-sm-2 control-label">Last Name</label>
-        <div class="col-sm-4"><input type="text" id="lastName" name="lastName" placeholder="Last Name" class="input-with-feedback" /></div>
-      </div>
-    </div>
+    {{>nameRow}}
     <div class="row">
       <div class="validate-item" title="Can contain letters, numbers, and underscores (_).">
         <label for="userName" class="col-sm-2 control-label">Username</label>
@@ -28,27 +19,8 @@
         <div class="col-sm-4"><input type="email" id="email" name="email" placeholder="Email Address" class="input-with-feedback" /></div>
       </div>
     </div>
-    <div class="row">
-      <div class="validate-item" title="Must be at least 8 characters long, and contain at least one letter and one number.">
-        <label for="password" class="col-sm-2 control-label">Password</label>
-        <div class="col-sm-4"><input type="password" id="password" name="password" placeholder="Password" class="input-with-feedback" /></div>
-      </div>
-      <div class="validate-item" title="Must match the first password.">
-        <label for="confirmpass" class="col-sm-2 control-label">Confirm Password</label>
-        <div class="col-sm-4"><input type="password" id="confirmpass" name="confirmpass" placeholder="Confirm Password" class="input-with-feedback" /></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="validate-item" title="Begin typing the name of your school, then choose it from the dropdown when it appears.  If it does not appear, type in the full name.  We may contact you for more details (State, School System, website, etc).">
-        <label for="school" class="col-sm-2 control-label">School</label>
-        <div class="col-sm-4"><input type="text" id="school" name="school" placeholder="School" class="input-with-feedback" /></div>
-      </div>
-      <div class="validate-item" title="Teachers will be verified automatically by email AND manually with your school.  Please allow up to 7 days for verification.">
-        <label class="col-sm-2 control-label">I am a</label>
-  			<div class="col-sm-2"><label class="radio-inline control-label"><input type="radio" name="userType" value="unverified-teacher" />Teacher</label></div>
-  			<div class="col-sm-2"><label class="radio-inline control-label"><input type="radio" name="userType" value="student" checked="true"/>Student</label></div>
-      </div>
-    </div>
+    {{>passwordRow}}
+    {{>schoolRow}}
     <div class="row">
       <small class="col-sm-12 text-muted">
         NOTE: In order to ensure the utmost security in SCIO's bank of teacher-submitted questions and assignments,
@@ -60,7 +32,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12">
-        <button type="submit" class="btn btn-primary pull-right" name="signUp" id="signUp">Sign Up!</button>
+        <button type="submit" class="btn btn-primary pull-right" name="signUp" id="signUp" disabled>Sign Up!</button>
       </div>
     </div>
   </form>
@@ -69,12 +41,87 @@
 <template name="schoolTypeahead">
   <div>
     <div class="pull-right" style="margin-left:5px;">{{State}}</div>
-    <strong>{{SchoolLongName}}</strong><br/>
+    <strong>{{SchoolName}}</strong><br/>
     <small>{{SystemName}}</small>
   </div>
 </template>
 
 <template name="profile">
-  <h1>Profile</h1>
+  <form id="profileForm" class="form-horizontal">
+    <legend>Profile</legend>
+    <div class="row">
+      <div class="col-sm-12 alert alert-danger" style="display:none">
+        <button type="button" class="close">&times;</button>
+        <strong>Error!</strong> <span></span>
+      </div>
+    </div>
+    {{>nameRow}}
+    {{>schoolRow}}
+    <div class="row">
+      <div class="col-sm-12">
+        <button type="submit" class="btn btn-primary pull-right" name="update" id="update" disabled>Update Profile</button>
+      </div>
+    </div>
+  </form>
+  <form id="changePasswordForm" class="form-horizontal">
+    <legend>Change Password</legend>
+    <div class="row">
+      <div class="col-sm-12 alert alert-danger" style="display:none">
+        <button type="button" class="close">&times;</button>
+        <strong>Error!</strong> <span></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="validate-item" title="Must match your current password.">
+        <label for="oldPassword" class="col-sm-2 control-label">Old Password</label>
+        <div class="col-sm-4"><input type="password" id="oldPassword" name="oldPassword" placeholder="Old Password" class="input-with-feedback" /></div>
+      </div>
+    </div>
+    {{>passwordRow}}
+    <div class="row">
+      <div class="col-sm-12">
+        <button type="submit" class="btn btn-primary pull-right" name="changePassword" id="changePassword" disabled>Change Password</button>
+      </div>
+    </div>
+  </form>
 </template>
 
+<template name="nameRow">
+  <div class="row">
+    <div class="validate-item" title="Required">
+      <label for="firstName" class="col-sm-2 control-label">First Name</label>
+      <div class="col-sm-4"><input type="text" id="firstName" name="firstName" placeholder="First Name" class="input-with-feedback non-empty" value="{{currentUser.profile.firstName}}" /></div>
+    </div>
+    <div class="validate-item" title="Required">
+      <label for="lastName" class="col-sm-2 control-label">Last Name</label>
+      <div class="col-sm-4"><input type="text" id="lastName" name="lastName" placeholder="Last Name" class="input-with-feedback non-empty" value="{{currentUser.profile.lastName}}" /></div>
+    </div>
+  </div>
+</template>
+
+<template name="passwordRow">
+  <div class="row">
+    <div class="validate-item" title="Must be at least 8 characters long, and contain at least one letter and one number.">
+      <label for="password" class="col-sm-2 control-label">Password</label>
+      <div class="col-sm-4"><input type="password" id="password" name="password" placeholder="Password" class="input-with-feedback" /></div>
+    </div>
+    <div class="validate-item" title="Must match the first password.">
+      <label for="confirmpass" class="col-sm-2 control-label">Confirm Password</label>
+      <div class="col-sm-4"><input type="password" id="confirmpass" name="confirmpass" placeholder="Confirm Password" class="input-with-feedback" /></div>
+    </div>
+  </div>
+</template>
+
+<template name="schoolRow">
+  <div class="row">
+    <div class="validate-item" title="Begin typing the name of your school, then choose it from the dropdown when it appears.  If it does not appear, type in the full name.  We may contact you for more details (State, School System, website, etc).">
+      <label for="school" class="col-sm-2 control-label">School</label>
+      <div class="col-sm-4"><input type="text" id="school" name="school" placeholder="School" class="input-with-feedback" /></div>
+    </div>
+    <div class="validate-item" title="Teachers will be verified automatically by email AND manually with your school.  Please allow up to 7 days for verification.">
+      <label class="col-sm-2 control-label">I am a</label>
+  		<div class="col-sm-2"><label class="radio-inline control-label"><input type="radio" name="userType" value="{{#if isUnverified}}unverified-{{/if}}teacher" {{#if isTeacher}}checked="true"{{/if}} />Teacher</label></div>
+			<div class="col-sm-2"><label class="radio-inline control-label"><input type="radio" name="userType" value="student" {{#if isStudent}}checked="true"{{/if}} />Student</label></div>
+    </div>
+  </div>
+</template>

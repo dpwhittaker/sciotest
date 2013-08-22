@@ -6,18 +6,19 @@
       "accounts-ui-bootstrap-3": {},
       "HTML5-History-API": {},
       "router": {},
-      "typeahead-js": {}
+      "typeahead-js": {},
+      "font-awesome": {}
     },
     "packages": {
       "bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
-        "tag": "v0.2.8",
-        "commit": "8026f0beaa0274849adfcf8c53d919216b5e06ba"
+        "tag": "v0.3.2",
+        "commit": "a09f87b01f625ca86d97f93206e7ff475cf3db3b"
       },
       "accounts-ui-bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-accounts-ui-bootstrap-3.git",
-        "tag": "v0.1.6",
-        "commit": "55d9e0dcf847521fc7192c7ef27ae84d2166f874"
+        "tag": "v0.2.0",
+        "commit": "77d86237dfebbd446a863b03d0f321947b23edfe"
       },
       "HTML5-History-API": {
         "git": "https://github.com/tmeasday/meteor-HTML5-History-API.git",
@@ -26,13 +27,18 @@
       },
       "router": {
         "git": "https://github.com/tmeasday/meteor-router.git",
-        "tag": "v0.5.3",
-        "commit": "7bd3a1bdd1099625bb8b49406d9b8f961d6f4a17"
+        "tag": "v0.5.4",
+        "commit": "e40ee450a756b54a32ed67be4595772403256fb5"
       },
       "typeahead-js": {
         "git": "https://github.com/olragon/meteor-typeahead-js.git",
         "tag": "v0.9.3",
         "commit": "9241c6c68f39cf37699b5de7b03d60a5434a5d21"
+      },
+      "font-awesome": {
+        "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
+        "tag": "v3.2.0",
+        "commit": "2cba6f907a2579cae2d399b522f9544c13d5e091"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",
