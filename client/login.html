@@ -18,10 +18,10 @@
 </template>
 
 <template name="loggedOut">
-  <form class="navbar-form pull-right has-error">
+  <form class="navbar-form pull-right">
     <div class="input-group">
-      <input type="text" placeholder="Username or Email" class="pull-left username" style="width:150px" />
-      <input type="password" placeholder="Password" class="pull-left password" style="width:150px" />
+      <div class="pull-left input-group"><input type="text" placeholder="Username or Email" class="form-control username" style="width:150px" /><span></span></div>
+      <div class="pull-left"><input type="password" placeholder="Password" class="form-control password" style="width:150px" /></div>
       <span class="input-group-btn" style="display:inline">
         <button class="btn btn-primary pull-left signIn">Sign In</button>
         <button class="btn btn-default pull-left forgotPassword">Forgot Password</button>

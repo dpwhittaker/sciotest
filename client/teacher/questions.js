@@ -1,5 +1,7 @@
 function renderText() {
-  $('#text-output').html(marked($('#text').val(), {gfm:true, breaks:true}));
+  var question = Session.get("question");
+  question.text = $('#text').val();
+  Session.set("question", question);
 }
 
 Template.questions.helpers({
@@ -7,14 +9,21 @@ Template.questions.helpers({
 		return Questions.find({});
 	},
 	isActive: function() {
-		return this._id == Session.get("questionId") ? "active" : "";
+		return !!Session.get("question") && this._id == Session.get("question")._id ? "active" : "";
+	},
+	activeQuestion: function() {
+	  return Session.get("question");
+	},
+	questionPreview: function() {
+	  if (!Session.get("question")) return "";
+	  return new Handlebars.SafeString(marked(Session.get("question").text, {gfm:true, breaks:true}));
 	}
 });
 
 Template.questions.events({
 	'click #myQuestionList .list-group-item': function(event) {
 		event.preventDefault();
-		Session.set("questionId", this._id);
+		Session.set("question", this);
 	},
 	'click #newQuestion': function(event) {
 		event.preventDefault();
@@ -26,8 +35,18 @@ Template.questions.events({
 			tags: []
 		}, function(err, res) {
 			if (err) console.log(err);
-			else Session.set("questionId", res);
+			else Session.set("question", Questions.findOne({_id: res}));
 		});
+	},
+	'click #save, submit #questionForm': function(event) {
+	  event.preventDefault();
+	  Questions.update({_id: Session.get("question")._id}, {
+	    title: $('#title').val(),
+	    text: $('#text').val()
+	  }, function(err) {
+	    if (err) console.log(err);
+	    renderText();
+	  })
 	},
   'keyup #text': function(event) {
     renderText();

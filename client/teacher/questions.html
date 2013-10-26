@@ -4,44 +4,44 @@
       <legend>My Questions</legend>
 			<a id="newQuestion" class="btn btn-small btn-default" title="New Question"><i class="icon-file"></i></a>
 			
-      <div id="myQuestionList" class="list-group">
+      <div id="myQuestionList" class="list-group" style="line-height:0.8">
         {{#each questions}}
-          <a href="#" class="list-group-item clearfix {{isActive}}">
-            <img class="pull-left" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACDUlEQVR4Xu2Yz6/BQBDHpxoEcfTjVBVx4yjEv+/EQdwa14pTE04OBO+92WSavqoXOuFp+u1JY3d29rvfmQ9r7Xa7L8rxY0EAOAAlgB6Q4x5IaIKgACgACoACoECOFQAGgUFgEBgEBnMMAfwZAgaBQWAQGAQGgcEcK6DG4Pl8ptlsRpfLxcjYarVoOBz+knSz2dB6vU78Lkn7V8S8d8YqAa7XK83ncyoUCjQej2m5XNIPVmkwGFC73TZrypjD4fCQAK+I+ZfBVQLwZlerFXU6Her1eonreJ5HQRAQn2qj0TDukHm1Ws0Ix2O2260RrlQqpYqZtopVAoi1y+UyHY9Hk0O32w3FkI06jkO+74cC8Dh2y36/p8lkQovFgqrVqhFDEzONCCoB5OSk7qMl0Gw2w/Lo9/vmVMUBnGi0zi3Loul0SpVKJXRDmphvF0BOS049+n46nW5sHRVAXMAuiTZObcxnRVA5IN4DJHnXdU3dc+OLP/V63Vhd5haLRVM+0jg1MZ/dPI9XCZDUsbmuxc6SkGxKHCDzGJ2j0cj0A/7Mwti2fUOWR2Km2bxagHgt83sUgfcEkN4RLx0phfjvgEdi/psAaRf+lHmqEviUTWjygAC4EcKNEG6EcCOk6aJZnwsKgAKgACgACmS9k2vyBwVAAVAAFAAFNF0063NBAVAAFAAFQIGsd3JN/qBA3inwDTUHcp+19ttaAAAAAElFTkSuQmCC"/>
-            <h4 class="list-group-item-heading">{{title}}</h4>
-            <p class="list-group-item-text">{{text}}</p>
+          <a href="#" class="list-group-item clearfix {{isActive}}" style="height:60px; overflow:hidden;">
+            <img class="pull-left img-thumbnail" style="max-height:40px;max-width:40px;margin-right:5px;" src="data:{{#if images.[0]}}{{images.[0]}}{{else}}image/png;base64,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{{/if}}"/>
+            <strong class="list-group-item-heading">{{title}}</strong><br/>
+            <small class="list-group-item-text">{{text}}</small>
           </a>
         {{/each}}
       </div>
     </div>
     <div class="col-sm-4">
-      <form role="form">
+      <form id="questionForm" role="form">
         <legend>Edit Question</legend>
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" name="title" id="title" placeholder="Title" class="form-control" />
-        </div>
-        <div class="form-group">
-          <label for="text">Text</label><br/>
-          <a id="bold" href="#" class="btn btn-small btn-default" title="Bold"><i class="icon-bold"></i></a>
-          <a id="italic" href="#" class="btn btn-small btn-default" title="Italic"><i class="icon-italic"></i></a>
-          <a id="bullet" href="#" class="btn btn-small btn-default" title="Bulleted List"><i class="icon-list-ul"></i></a>
-          <a id="number" href="#" class="btn btn-small btn-default" title="Numbered List"><i class="icon-list-ol"></i></a>
-          <a id="quote" href="#" class="btn btn-small btn-default" title="Quote"><i class="icon-quote-left"></i></a>
-          <a id="table" href="#" class="btn btn-small btn-default" title="Table"><i class="icon-table"></i></a>
-          <a id="link" href="#" class="btn btn-small btn-default" title="Link"><i class="icon-link"></i></a>
-          <a id="image" href="#" class="btn btn-small btn-default" title="Image"><i class="icon-picture"></i></a>
-          <a id="math" href="#" class="btn btn-small btn-default" title="Formula">Σ</a>
-          <textarea name="text" id="text" rows="8" class="form-control"></textarea>
-        </div>
-        <small>Use <a title="a
-        b
-        c">Markdown</a> to add styles.</small>
+        {{#with activeQuestion}}
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" placeholder="Title" value="{{title}}" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="text">Text</label><br/>
+            <a id="bold" href="#" class="btn btn-small btn-default" title="Bold"><i class="icon-bold"></i></a>
+            <a id="italic" href="#" class="btn btn-small btn-default" title="Italic"><i class="icon-italic"></i></a>
+            <a id="bullet" href="#" class="btn btn-small btn-default" title="Bulleted List"><i class="icon-list-ul"></i></a>
+            <a id="number" href="#" class="btn btn-small btn-default" title="Numbered List"><i class="icon-list-ol"></i></a>
+            <a id="quote" href="#" class="btn btn-small btn-default" title="Quote"><i class="icon-quote-left"></i></a>
+            <a id="table" href="#" class="btn btn-small btn-default" title="Table"><i class="icon-table"></i></a>
+            <a id="link" href="#" class="btn btn-small btn-default" title="Link"><i class="icon-link"></i></a>
+            <a id="image" href="#" class="btn btn-small btn-default" title="Image"><i class="icon-picture"></i></a>
+            <a id="math" href="#" class="btn btn-small btn-default" title="Formula">Σ</a>
+            <textarea name="text" id="text" rows="8" class="form-control">{{text}}</textarea>
+          </div>
+          <button id="save" class="btn btn-primary">Save</button>
+        {{/with}}
       </form>
     </div>
     <div class="col-sm-4">
       <legend>Preview Question</legend>
-      <div id="text-output"></div>
+      <div id="text-output">{{questionPreview}}</div>
     </div>
   </div>
 </template>

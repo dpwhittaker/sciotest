@@ -10,8 +10,8 @@ Template.loggedOut.events({
     var self = this;
     Meteor.loginWithPassword(this.$(".username").val(), this.$(".password").val(), function(err) {
       if (!err) return;
-      if (/user/i.test(err.reason)) self.$(".username").addClass("input-with-feedback");
-      if (/pass/i.test(err.reason)) self.$(".password").addClass("input-with-feedback");
+      if (/user/i.test(err.reason)) self.$(".username").parent().addClass("has-error");
+      if (/pass/i.test(err.reason)) self.$(".password").parent().addClass("has-error");
       console.log(err);
     });
   },
@@ -24,15 +24,15 @@ Template.loggedOut.events({
           this.$(".forgotPassword").text("Email Sent!").attr("disabled", "disabled");
           return;
         }
-        this.$(".username").addClass("input-with-feedback");
+        this.$(".username").parent().addClass("has-error");
         console.log(e);
       });
     } catch (e) {
-      this.$(".username").addClass("input-with-feedback");
+      this.$(".username").parent().addClass("has-error");
       console.log(e);
     }
   },
   "keydown input": function(event) {
-    $("input").removeClass("input-with-feedback");
+    $(event.target).parent().removeClass("has-error");
   }
 });
